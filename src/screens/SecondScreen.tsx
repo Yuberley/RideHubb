@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const RegisterScreen = () => {
+const SecondScreen = () => {
   return (
     <View>
-      <Text>RegisterScreen</Text>
+      <Text>SecondScreen</Text>
     </View>
   )
 }
 
-export default RegisterScreen;
+export default SecondScreen
 
 const styles = StyleSheet.create({})

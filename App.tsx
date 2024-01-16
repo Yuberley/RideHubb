@@ -1,28 +1,26 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
-import Button from '@/components/Button';
+import { registerRootComponent } from 'expo';
+
+
+import Navigation from "@/navigation/auth";
+import { AuthProvider } from "@/providers/AuthProvider";
+
+
 
 
 const App = () => {
     return (
         <PaperProvider>
-            <View style={styles.container}>
-                <Button />
+            <AuthProvider>
+                <Navigation />
                 <StatusBar style="auto" />
-            </View>
+            </AuthProvider>
         </PaperProvider>
     );
 }
 
-export default App;
+registerRootComponent(App);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

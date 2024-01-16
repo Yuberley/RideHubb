@@ -1,0 +1,1 @@
+export const SUPABASE_KEY = process.env.EXPO_PUBLIC_SUPABASE_KEY as string;

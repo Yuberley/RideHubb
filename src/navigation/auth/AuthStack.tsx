@@ -1,24 +1,23 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { 
-    LoginScreen,
-    RegisterScreen,
-    ForgetPasswordScreen
-} from "@/screens/auth";
+import Login from "@/screens/auth/LoginScreen";
+import RegisterScreen from "@/screens/auth/RegisterScreen";
+import ForgetPasswordScreen from "@/screens/auth/ForgetPasswordScreen";
 
-const Stack = createNativeStackNavigator();
-
-export const AuthStack = () => {
-    return (
-        <Stack.Navigator
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-            <Stack.Screen name="ForgetPasswordScreen" component={ForgetPasswordScreen} />
-        </Stack.Navigator>
-    );
+const AuthStack = createNativeStackNavigator();
+const Auth = () => {
+  return (
+    <AuthStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} />
+      <AuthStack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+    </AuthStack.Navigator>
+  );
 };
+
+export default Auth;
