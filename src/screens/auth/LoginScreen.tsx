@@ -7,14 +7,16 @@ import {
 	KeyboardAvoidingView,
 	Image,
 } from 'react-native';
-import { supabase } from '../../supabase/initSupabase';
-import { AuthStackParamList } from '../../types/navigation';
+import { TextInput } from '@/components'
+import { supabase } from '@/supabase/initSupabase';
+import { AuthStackParamList } from '@/types/navigation';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import RideHubbLogo from '@/images/ridehubb.png';
+import { useTheme as useThemeCustom } from '@/providers/ThemeProvider';
 
 import {
 	Text,
 	Button,
-	TextInput,
 	useTheme,
 	MD3LightTheme as DefaultTheme,
 } from 'react-native-paper';
@@ -23,6 +25,7 @@ const Login = ({
 	navigation,
 }: any) => {
 	const { colors: themeColor, dark: isDarkmode } = useTheme();
+	const { setTheme } = useThemeCustom();
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [loading, setLoading] = useState<boolean>(false);
@@ -35,7 +38,7 @@ const Login = ({
 		});
 		if (!error && !data.user) {
 			setLoading(false);
-			alert('Check your email for the login link!');
+			alert('Revisa tu correo para el enlace de inicio de sesión!');
 		}
 		if (error) {
 			setLoading(false);
@@ -64,9 +67,10 @@ const Login = ({
 						resizeMode="contain"
 						style={{
 							height: 220,
-							width: 220,
+							width: '100%',
+							marginTop: 30,
 						}}
-						source={require('../../../assets/images/login.png')}
+						source={RideHubbLogo}
 					/>
 				</View>
 				<View
@@ -80,38 +84,36 @@ const Login = ({
 					}}
 				>
 					<Text
-						// fontWeight="bold"
+						variant='titleMedium'
 						style={{
 							alignSelf: 'center',
 							padding: 30,
 						}}
-						// size="h3"
 					>
-						Login
+						Iniciar sesión
 					</Text>
-					<Text>Email</Text>
+					<Text>Correo</Text>
 					<TextInput
-						// containerStyle={{ marginTop: 15 }}
-						placeholder="Enter your email"
+						containerStyle={{ marginTop: 15 }}
+						placeholder="Ingresa tu correo"
 						value={email}
 						autoCapitalize="none"
-						// autoCompleteType="off"
 						autoCorrect={false}
 						keyboardType="email-address"
 						onChangeText={(text) => setEmail(text)}
 					/>
 
-					<Text style={{ marginTop: 15 }}>Password</Text>
+					<Text style={{ marginTop: 15 }}>Contraseña</Text>
 					<TextInput
-						// containerStyle={{ marginTop: 15 }}
-						placeholder="Enter your password"
+						containerStyle={{ marginTop: 15 }}
+						placeholder="Ingresa tu contraseña"
 						value={password}
 						autoCapitalize="none"
-						// autoCompleteType="off"
 						autoCorrect={false}
 						secureTextEntry={true}
 						onChangeText={(text) => setPassword(text)}
 					/>
+
 					<Button
 						onPress={() => {
 							login();
@@ -122,7 +124,7 @@ const Login = ({
 						disabled={loading}
 						loading={loading}
 					>
-						{loading ? 'Loading' : 'Continue'}
+						{loading ? 'Cargando' : 'Continuar'}
 					</Button>
 
 					<View
@@ -133,7 +135,9 @@ const Login = ({
 							justifyContent: 'center',
 						}}
 					>
-						<Text>Don't have an account?</Text>
+						<Text>
+							¿No tienes una cuenta?
+						</Text>
 						<TouchableOpacity
 							onPress={() => {
 								navigation.navigate(
@@ -142,13 +146,12 @@ const Login = ({
 							}}
 						>
 							<Text
-								// size="md"
-								// fontWeight="bold"
+								variant='titleMedium'
 								style={{
 									marginLeft: 5,
 								}}
 							>
-								Register here
+								Registrate aquí
 							</Text>
 						</TouchableOpacity>
 					</View>
@@ -167,7 +170,9 @@ const Login = ({
 								);
 							}}
 						>
-							<Text>Forget password</Text>
+							<Text>
+								¿Olvidaste tu contraseña?
+							</Text>
 						</TouchableOpacity>
 					</View>
 					<View
@@ -180,7 +185,7 @@ const Login = ({
 					>
 						<TouchableOpacity
 							onPress={() => {
-								// isDarkmode ? setTheme("light") : setTheme("dark");
+								isDarkmode ? setTheme("light") : setTheme("dark");
 							}}
 						>
 							<Text
@@ -191,8 +196,8 @@ const Login = ({
 								}}
 							>
 								{isDarkmode
-									? '☀️ light theme'
-									: '🌑 dark theme'}
+									? '☀️ tema claro'
+									: '🌑 tema oscuro'}
 							</Text>
 						</TouchableOpacity>
 					</View>

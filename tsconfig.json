@@ -4,10 +4,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@configs/*": ["src/config/*"],
-      // "@components/*": ["src/components/*"],
-      // "@constants/*": ["src/constants/*"],
+      "@/*": ["src/*", "assets/*"],
     }
   },
   "include": [

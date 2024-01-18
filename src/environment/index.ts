@@ -1,1 +1,5 @@
-export const SUPABASE_KEY = process.env.EXPO_PUBLIC_SUPABASE_KEY as string;
+import { SUPABASE_KEY as SPK } from '@env';
+
+export const SUPABASE_KEY = SPK;
+
+export const SUPABASE_URL = 'https://urthitkbidicmeyjqbfa.supabase.co';

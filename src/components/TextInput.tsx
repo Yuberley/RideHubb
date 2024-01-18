@@ -6,8 +6,8 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-// import { component } from "../../constants/colors";
-// import { useTheme } from "../../provider/ThemeProvider";
+import { component } from "@/theme";
+import { useTheme } from "@/providers/ThemeProvider";
 
 interface Props extends TextInputProps {
   containerStyle?: ViewStyle;
@@ -19,18 +19,17 @@ interface Props extends TextInputProps {
   borderRadius?: number;
 }
 
-const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: any) => {
-//   const { theme } = useTheme();
+const StyledTextInput: React.FC<Props> = (props: Props, ref: any) => {
+  const { theme } = useTheme();
   const {
     containerStyle,
     leftContent,
     rightContent,
-    // backgroundColor = containerStyle?.backgroundColor ||
-    //   component[theme].textInput.backgroundColor,
-    // borderColor = component[theme].textInput.borderColor,
+    backgroundColor = containerStyle?.backgroundColor ||
+      component[theme].textInput.backgroundColor,
+    borderColor = component[theme].textInput.borderColor,
     borderWidth = containerStyle?.borderWidth || 1,
     borderRadius = containerStyle?.borderRadius || 8,
-
     ...otherProps
   } = props;
 
@@ -38,8 +37,8 @@ const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: an
     <View
       style={{
         ...containerStyle,
-        // backgroundColor: backgroundColor,
-        // borderColor: borderColor,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
         borderWidth: borderWidth,
         borderRadius: borderRadius,
         flexDirection: containerStyle?.flexDirection || "row",
@@ -52,12 +51,12 @@ const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: an
       <TextInput
         {...otherProps}
         ref={ref}
-        // placeholderTextColor={component[theme].textInput.placeholderTextColor}
+        placeholderTextColor={component[theme].textInput.placeholderTextColor}
         style={{
           flex: 1,
-        //   color: component[theme].textInput.color,
+          color: component[theme].textInput.color,
           paddingVertical: containerStyle?.padding || 10,
-          fontFamily: "Ubuntu_400Regular",
+          // fontFamily: "Ubuntu_400Regular",
           marginLeft: leftContent ? 5 : 0,
           marginRight: rightContent ? 5 : 0,
         }}
@@ -65,5 +64,5 @@ const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: an
       {rightContent}
     </View>
   );
-});
+};
 export default StyledTextInput;
