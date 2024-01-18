@@ -3,6 +3,7 @@
     "name": "RideHubb",
     "slug": "RideHubb",
     "version": "1.0.0",
+    "owner": "ridehubb",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,16 +19,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ride.hubb"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ride.hubb"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "915eabdc-0158-4f07-a96d-1b41d610c8e0"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/915eabdc-0158-4f07-a96d-1b41d610c8e0"
     }
   }
 }
