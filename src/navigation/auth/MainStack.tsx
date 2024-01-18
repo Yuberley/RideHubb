@@ -2,15 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import Home from "@/screens/Home";
 import SecondScreen from "@/screens/SecondScreen";
-
-const MainTabs = () => {
-    return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text>MainTabs</Text>
-        </View>
-    );
-}
 
 const MainStack = createNativeStackNavigator();
 const Main = () => {
@@ -20,7 +13,7 @@ const Main = () => {
                 headerShown: false,
             }}
         >
-            <MainStack.Screen name="MainTabs" component={MainTabs} />
+            <MainStack.Screen name="Home" component={Home} />
             <MainStack.Screen name="SecondScreen" component={SecondScreen} />
         </MainStack.Navigator>
     );

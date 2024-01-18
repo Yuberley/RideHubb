@@ -21,16 +21,14 @@ import {
 	MD3LightTheme as DefaultTheme,
 } from 'react-native-paper';
 
-const Login = ({
-	navigation,
-}: any) => {
+const Login = ({ navigation }: any) => {
 	const { colors: themeColor, dark: isDarkmode } = useTheme();
 	const { setTheme } = useThemeCustom();
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [loading, setLoading] = useState<boolean>(false);
 
-	async function login() {
+	const login = async ()  => {
 		setLoading(true);
 		const { data, error } = await supabase.auth.signInWithPassword({
 			email: email,
@@ -45,6 +43,8 @@ const Login = ({
 			alert(error.message);
 		}
 	}
+	
+
 	return (
 		<KeyboardAvoidingView behavior="height" enabled style={{ flex: 1 }}>
 			{/* <Layout> */}
