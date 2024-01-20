@@ -7,9 +7,10 @@ import Main from './MainStack';
 import Auth from './AuthStack';
 import Loading from '@/screens/utils/Loading';
 
-export default () => {
+export default ({ navigation }: any) => {
 	const auth = useContext(AuthContext);
 	const user = auth.user;
+
 	return (
 		<NavigationContainer>
 			{user == null && <Loading />}

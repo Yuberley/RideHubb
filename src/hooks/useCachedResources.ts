@@ -36,21 +36,10 @@ export default function useCachedResources(
 						Ubuntu_500Medium_Italic,
 						Ubuntu_700Bold,
 						Ubuntu_700Bold_Italic,
-
-
-						// Ubuntu_300Light: require('@/ubuntu/Ubuntu_300Light.ttf'),
-						// Ubuntu_300Light_Italic: require('@/ubuntu/Ubuntu_300Light_Italic.ttf'),
-						// Ubuntu_400Regular: require('@/ubuntu/Ubuntu_400Regular.ttf'),
-						// Ubuntu_400Regular_Italic: require('@/ubuntu/Ubuntu_400Regular_Italic.ttf'),
-						// Ubuntu_500Medium: require('@/ubuntu/Ubuntu_500Medium.ttf'),
-						// Ubuntu_500Medium_Italic: require('@/ubuntu/Ubuntu_500Medium_Italic.ttf'),
-						// Ubuntu_700Bold: require('@/ubuntu/Ubuntu_700Bold.ttf'),
-						// Ubuntu_700Bold_Italic: require('@/ubuntu/Ubuntu_700Bold_Italic.ttf'),
 						...fonts,
 					}),
 				]);
 			} catch (e) {
-				// We might want to provide this error information to an error reporting service
 				console.warn(e);
 			} finally {
 				setLoadingComplete(true);
