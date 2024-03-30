@@ -4,21 +4,19 @@ import { PaperProvider } from 'react-native-paper';
 import { registerRootComponent } from 'expo';
 import { AuthProvider } from "@/providers/AuthProvider";
 import Navigation from "@/navigation/auth";
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 import { store } from '@/context/store';
-
-
 
 const App = () => {
     return (
-        <Provider store={store}>
+        // <Provider store={store}>
             <PaperProvider>
                 <AuthProvider>
                     <Navigation />
                     <StatusBar style="auto" />
                 </AuthProvider>
             </PaperProvider>
-        </Provider>
+        // </Provider>
     );
 }
 

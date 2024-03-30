@@ -6,6 +6,7 @@ import RegisterScreen from "@/screens/auth/RegisterScreen";
 import ForgetPasswordScreen from "@/screens/auth/ForgetPasswordScreen";
 
 const AuthStack = createNativeStackNavigator();
+
 const Auth = () => {
     return (
         <AuthStack.Navigator

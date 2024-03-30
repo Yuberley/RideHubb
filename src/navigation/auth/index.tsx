@@ -3,19 +3,19 @@ import { AuthContext } from '@/providers/AuthProvider';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import Main from './MainStack';
-import Auth from './AuthStack';
+import Main from '@/navigation/auth/MainStack';
+import Auth from '@/navigation/auth/AuthStack';
 import Loading from '@/screens/utils/Loading';
 
 export default ({ navigation }: any) => {
 	const auth = useContext(AuthContext);
-	const user = auth.user;
+	const isAuthenticated = auth.isAuthenticated;
 
 	return (
 		<NavigationContainer>
-			{user == null && <Loading />}
-			{user == false && <Auth />}
-			{user == true && <Main />}
+			{isAuthenticated == null && <Loading />}
+			{isAuthenticated == false && <Auth />}
+			{isAuthenticated == true && <Main />}
 		</NavigationContainer>
 	);
 };
