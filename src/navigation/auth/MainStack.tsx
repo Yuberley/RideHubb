@@ -6,6 +6,7 @@ import Home from "@/screens/Home";
 import SecondScreen from "@/screens/SecondScreen";
 
 const MainStack = createNativeStackNavigator();
+
 const Main = () => {
     return (
         <MainStack.Navigator

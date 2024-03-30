@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
 	ScrollView,
@@ -13,7 +13,7 @@ import { AuthStackParamList } from '@/types/navigation';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import RideHubbLogo from '@/images/ridehubb.png';
 import { useTheme as useThemeCustom } from '@/providers/ThemeProvider';
-
+import { AuthContext } from '@/providers/AuthProvider';
 import {
 	Text,
 	Button,
@@ -22,6 +22,7 @@ import {
 } from 'react-native-paper';
 
 const Login = ({ navigation }: any) => {
+	
 	const { colors: themeColor, dark: isDarkmode } = useTheme();
 	const { setTheme } = useThemeCustom();
 	const [email, setEmail] = useState<string>('');
@@ -34,6 +35,7 @@ const Login = ({ navigation }: any) => {
 			email: email,
 			password: password,
 		});
+
 		if (!error && !data.user) {
 			setLoading(false);
 			alert('Revisa tu correo para el enlace de inicio de sesión!');

@@ -3,7 +3,7 @@ import { supabase } from '../supabase/initSupabase';
 import { Session } from '@supabase/supabase-js';
 
 type ContextProps = {
-	user: null | boolean;
+	isAuthenticated: null | boolean;
 	session: Session | null;
 };
 
@@ -14,37 +14,36 @@ interface Props {
 }
 
 const AuthProvider = (props: Props) => {
-	// user null = loading
-	const [user, setUser] = useState<null | boolean>(null);
+	const [isAuthenticated, seIsAuthenticated] = useState<null | boolean>(null);
 	const [session, setSession] = useState<Session | null>(null);
 	
 
-	const GetSession = async () => {
+	const getSession = async () => {
 		const { data, error } = await supabase.auth.getSession();
 		const { session } = data;
 
 		setSession(session);
-		setUser(session ? true : false);
+		seIsAuthenticated(session ? true : false);
 	};
 
 	useEffect(() => {
-		GetSession();
+		getSession(); 
 		const { data: authListener } = supabase.auth.onAuthStateChange(
 			async (event, session) => {
 				console.log(`Supabase auth event: ${event}`);
 				setSession(session);
-				setUser(session ? true : false);
+				seIsAuthenticated(session ? true : false);
 			}
 		);
 		return () => {
 			authListener.subscription.unsubscribe();
 		};
-	}, [user]);
+	}, [isAuthenticated]);
 
 	return (
 		<AuthContext.Provider
 			value={{
-				user,
+				isAuthenticated,
 				session,
 			}}
 		>
